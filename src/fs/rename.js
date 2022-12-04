@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import * as url from "url";
+import * as url from "node:url";
 import path from "node:path";
 import { existsSync } from "node:fs";
 

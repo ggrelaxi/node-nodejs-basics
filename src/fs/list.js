@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import * as url from "url";
+import * as url from "node:url";
 import path from "node:path";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));

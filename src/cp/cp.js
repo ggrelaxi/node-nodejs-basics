@@ -7,7 +7,7 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const spawnChildProcess = async (args) => {
     const childDestination = path.resolve(__dirname, "files", "script.js");
 
-    fork(childDestination, args);
+    const child = fork(childDestination, args);
 };
 
 spawnChildProcess();

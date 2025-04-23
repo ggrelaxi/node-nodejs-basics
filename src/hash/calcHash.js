@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import process from 'node:process';
+import os from 'node:os';
 
 const calculateHash = async () => {
 	// Write your code here
@@ -13,7 +15,7 @@ const calculateHash = async () => {
 			hash.update(chunk);
 		})
 		.on('end', () => {
-			console.log(hash.digest('hex'));
+			process.stdout.write(hash.digest('hex') + os.EOL);
 		});
 };
 

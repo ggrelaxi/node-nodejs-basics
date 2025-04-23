@@ -13,7 +13,7 @@ const transform = async () => {
 	try {
 		await pipeline(process.stdin, transform, process.stdout);
 	} catch (e) {
-		console.log(e);
+		console.error(e);
 	}
 };
 

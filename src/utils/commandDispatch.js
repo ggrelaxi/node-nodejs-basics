@@ -12,6 +12,8 @@ import { copyFile } from './copyFile.js';
 import { moveFile } from './moveFIle.js';
 import { osInfo } from './osInfo.js';
 import { calculateHash } from './calculateHash.js';
+import { compress } from './compress.js';
+import { decompress } from './decompress.js';
 
 const commandsList = {
 	'.exit': (_, userName) => {
@@ -57,6 +59,12 @@ const commandsList = {
 	},
 	hash: async (args) => {
 		await calculateHash(args);
+	},
+	compress: async (args) => {
+		await compress(args);
+	},
+	decompress: async (args) => {
+		await decompress(args);
 	},
 };
 

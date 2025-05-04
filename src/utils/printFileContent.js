@@ -35,7 +35,7 @@ export const printFileContent = async (args) => {
 				content.push(chunk);
 			});
 			readStream.on('end', () => {
-				console.log(content.join('').toString());
+				console.log(`\n${content.join('').toString()}`);
 				resolve();
 			});
 			readStream.on('error', () => {

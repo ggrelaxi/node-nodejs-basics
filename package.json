@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node ./bin/fileManager.js"
 	},
-	"author": "",
+	"author": "AlexGGrelaxi",
 	"license": "ISC",
-	"description": ""
+	"description": "CLI file manager"
 }

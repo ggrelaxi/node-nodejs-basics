@@ -2,7 +2,7 @@ import process from 'node:process';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import fs from 'fs/promises';
-import { createReadStream, read } from 'node:fs';
+import { createReadStream } from 'node:fs';
 
 export const calculateHash = async (args) => {
 	let fixedArgs = args;

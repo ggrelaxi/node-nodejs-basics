@@ -26,20 +26,21 @@ export const compress = async (args) => {
 	const absoluteSourceFilepath = path.resolve(currentDirPath, sourceFilepath);
 	const absoulteDestinationFilepath = path.resolve(currentDirPath, destinationFilepath);
 
+	const isSourceExisted = await fs
+		.access(absoluteSourceFilepath)
+		.then(() => true)
+		.catch(() => false);
+	const isDestinationExisted = await fs
+		.access(absoulteDestinationFilepath)
+		.then(() => true)
+		.catch(() => false);
+
+	if (!isSourceExisted || isDestinationExisted) {
+		console.log('\nInvalid input');
+		return;
+	}
+
 	try {
-		const isSourceExisted = await fs
-			.access(absoluteSourceFilepath)
-			.then(() => true)
-			.catch(() => false);
-		const isDestinationExisted = await fs
-			.access(absoulteDestinationFilepath)
-			.then(() => true)
-			.catch(() => false);
-
-		if (!isSourceExisted || isDestinationExisted) {
-			throw new Error();
-		}
-
 		const readStream = createReadStream(absoluteSourceFilepath);
 		const writeStream = createWriteStream(`${absoulteDestinationFilepath}.br`);
 		const brotli = zlib.createBrotliCompress();

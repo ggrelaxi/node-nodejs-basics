@@ -11,6 +11,7 @@ import { rename } from './rename.js';
 import { copyFile } from './copyFile.js';
 import { moveFile } from './moveFIle.js';
 import { osInfo } from './osInfo.js';
+import { calculateHash } from './calculateHash.js';
 
 const commandsList = {
 	'.exit': (_, userName) => {
@@ -53,6 +54,9 @@ const commandsList = {
 	},
 	os: async (args) => {
 		await osInfo(args);
+	},
+	hash: async (args) => {
+		await calculateHash(args);
 	},
 };
 

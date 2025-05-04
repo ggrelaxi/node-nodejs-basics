@@ -10,6 +10,7 @@ import { deleteFile } from './deleteFile.js';
 import { rename } from './rename.js';
 import { copyFile } from './copyFile.js';
 import { moveFile } from './moveFIle.js';
+import { osInfo } from './osInfo.js';
 
 const commandsList = {
 	'.exit': (_, userName) => {
@@ -49,6 +50,9 @@ const commandsList = {
 	},
 	rm: async (args) => {
 		await deleteFile(args);
+	},
+	os: async (args) => {
+		await osInfo(args);
 	},
 };
 

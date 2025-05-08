@@ -4,3 +4,5 @@ export interface IUser {
     age: number;
     hobies: string[]
 }
+
+export type Methods = "GET" | "POST" | "PUT" | "DELETE"

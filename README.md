@@ -5,6 +5,10 @@ https://github.com/ggrelaxi/node-nodejs-basics.git
 git checkout simple-crud-api-2025q2
 ```
 
+### add env file
+
+rename .env.examle to .env
+
 ### Install dependencies
 
 ```

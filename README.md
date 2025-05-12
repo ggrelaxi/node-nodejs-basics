@@ -20,6 +20,5 @@ npm run start:dev
 ### Run production mode
 
 ```
-npm run build
 npm run start:prod
 ```

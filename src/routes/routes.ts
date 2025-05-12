@@ -6,7 +6,7 @@ import { createUser } from "../handlers/createUser";
 import { putUser } from "../handlers/putUser";
 import { deleteUser } from "../handlers/deleteUser";
 
-export const dynamicRoutes = (request: IncomingMessage, response: ServerResponse, method: Methods, pathname: string, users: IUser[]) => {
+export const dynamicRoutes = async (request: IncomingMessage, response: ServerResponse, method: Methods, pathname: string, users: IUser[]) => {
     const routes = {
         'GET': [
             {
@@ -55,6 +55,11 @@ export const dynamicRoutes = (request: IncomingMessage, response: ServerResponse
             })
             
             route.handler(request, response, params, users);
+            return;
         }
     }
+
+    response.statusCode = 404;
+    response.write('Not found');
+    response.end();
 } 

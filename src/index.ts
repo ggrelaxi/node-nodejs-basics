@@ -1,21 +1,32 @@
-import { v4 as uuidv4 } from 'uuid';
-import http, {IncomingMessage} from 'node:http';
+import http from 'node:http';
 import { IUser, Methods } from './types/user';
 import { dynamicRoutes } from './routes/routes';
 import url from 'node:url';
 
 const app = () => {
-	const users: IUser[] = [{ id: uuidv4(), username: 'testUser', age: 33, hobies: ['moto'] }];
+	const users: IUser[] = [];
 
-	const server = http.createServer((request, response) => {
+	const server = http.createServer(async (request, response) => {
 		const parsedUrl = url.parse(request.url as string, true);
 		const pathname = parsedUrl.pathname as string;
 		const method = request.method as Methods;
 
-		dynamicRoutes(request, response, method, pathname, users)
+		try {
+			await dynamicRoutes(request, response, method, pathname, users)
+			throw new Error()
+		} catch(e) {
+			response.statusCode = 500;
+			response.write('Internal server error');
+			response.end();
+		}
 	});
 
 	server.listen(4000, () => console.log('server started!'));
+	server.on('error', (error) => {
+		console.error(error)
+	})
+
+	return server;
 };
 
 app();
